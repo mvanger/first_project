@@ -8,8 +8,25 @@ year = date.year
 month = date.month
 day = date.day
 
+
+# Use an array of team codes with a .each method?
+# Or a wildcard?
+# David suggests pulling down all the gids from the directory and using those, probably with an array.each
+# Pulls down index page
+data = Nokogiri::HTML(open("http://gd2.mlb.com/components/game/mlb/year_#{year}/month_0#{month}/day_#{day}/"))
+
+# Puts hrefs into an array
+gid = []
+data.xpath("//@href").each do |item|
+  gid << item.value
+end
+
+# Selects those elements that begin with "gid_"
+gid.select! { |a| a.include? "gid_" }
+
+# This needs revision, using the new gid array
 if day > 9
-  root_url ="http://gd2.mlb.com/components/game/mlb/year_#{year}/month_0#{month}/day_#{day}/gid_#{year}_0#{month}_#{day}_/.../mlb_/.../mlb_1"
+  root_url ="http://gd2.mlb.com/components/game/mlb/year_#{year}/month_0#{month}/day_#{day}/gid_#{year}_0#{month}_#{day}_bosmlb_oakmlb_1"
 else
   root_url ="http://gd2.mlb.com/components/game/mlb/year_#{year}/month_0#{month}/day_0#{day}/gid_#{year}_0#{month}_0#{day}_/.../mlb_/.../mlb_1"
 end
@@ -18,9 +35,9 @@ inning_url = root_url + "/inning/inning_all.xml"
 pitcher_url = root_url + "/players.xml"
 
 # Parses doc with Nokogiri
-doc = File.open("inning_all.xml")
-bb = Nokogiri::XML(doc)
-doc.close
+# doc = File.open("inning_all.xml")
+bb = Nokogiri::XML(open("#{inning_url}"))
+# doc.close
 
 # Finds all pitches with speeds
 speeds = bb.xpath("//@start_speed")
@@ -54,9 +71,9 @@ test = bb.xpath("/game/inning[8]/bottom/atbat[1]")[0]
 pitcher = test.attributes["pitcher"].value.to_i
 
 # Opens players file
-doc2 = File.open("../players.xml")
-pp = Nokogiri::XML(doc2)
-doc2.close
+# doc2 = File.open("../players.xml")
+pp = Nokogiri::XML(open("#{pitcher_url}"))
+# doc2.close
 
 id_arr = []
 first_arr = []
