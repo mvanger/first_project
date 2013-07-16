@@ -8,7 +8,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-date = Date.new(2013,5,21)
+date = Date.new(2013,7,14)
 year = date.year
 month = date.month
 day = date.day
@@ -56,6 +56,7 @@ end
 pitch_array = []
 pitcher_id_array = []
 pitcher_name_array = []
+pitcher_team_array = []
 
 root_urls.each do |url|
   inning_url = url + "inning/inning_all.xml"
@@ -110,6 +111,7 @@ root_urls.each do |url|
       id_arr = []
       first_arr = []
       last_arr = []
+      team_arr = []
 
       # Puts IDs into array
       pp.xpath("//player/@id").each do |id|
@@ -125,16 +127,22 @@ root_urls.each do |url|
         last_arr << last.value
       end
 
+      pp.xpath("//player/@team_abbrev").each do |team|
+        team_arr << team.value
+      end
+
       # Uses index of ID to find name
       index = id_arr.find_index("#{pitcher}")
       first = first_arr[index]
       last = last_arr[index]
+      team = team_arr[index]
       name = first + " " + last
 
       # Leaders for each game
       pitch_array << fastest
       pitcher_id_array << pitcher
       pitcher_name_array << name
+      pitcher_team_array << team
     rescue
     end
   end
@@ -150,4 +158,4 @@ if pitch_index != nil
 else
   puts "No pitches"
 end
-# puts pitcher_name_array.first
+puts pitcher_team_array[pitch_index]
