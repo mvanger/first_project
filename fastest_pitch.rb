@@ -8,7 +8,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-date = Date.new(2013,7,14)
+date = Date.new(2013,5,21)
 year = date.year
 month = date.month
 day = date.day
