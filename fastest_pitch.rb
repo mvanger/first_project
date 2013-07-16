@@ -4,12 +4,11 @@
 # Then I can call last date with a pitch
 ## And also work towards a leaderboard
 
-
 require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-date = Date.new(2013,7,8)
+date = Date.new(2013,7,14)
 year = date.year
 month = date.month
 day = date.day
@@ -20,10 +19,6 @@ day = date.day
 # month = date.month
 # day = date.day
 
-
-# Use an array of team codes with a .each method?
-# Or a wildcard?
-# David suggests pulling down all the gids from the directory and using those, probably with an array.each
 # Pulls down index page
 begin
   if day > 9
@@ -33,10 +28,15 @@ begin
   end
 rescue
 end
+
 # Puts hrefs into an array
 gid = []
-data.xpath("//@href").each do |item|
-  gid << item.value
+
+begin
+  data.xpath("//@href").each do |item|
+    gid << item.value
+  end
+rescue
 end
 
 # Selects those elements that begin with "gid_"
@@ -57,17 +57,13 @@ pitch_array = []
 pitcher_id_array = []
 pitcher_name_array = []
 
-## This is not working yet
 root_urls.each do |url|
   inning_url = url + "inning/inning_all.xml"
   pitcher_url = url + "players.xml"
 
   # Parses doc with Nokogiri
-  # doc = File.open("inning_all.xml")
   begin
     bb = Nokogiri::XML(open("#{inning_url}"))
-
-    # doc.close
 
     # Finds all pitches with speeds
     speeds = bb.xpath("//@start_speed")
@@ -97,9 +93,7 @@ root_urls.each do |url|
   unless pitch_number == nil
     atbat = speeds["#{pitch_number}".to_i].path
 
-    # This line doesn't work correctly
-    # Take atbat variable
-
+    # If more than 9 pitches in at bat
     if atbat[-16..-15].to_i > 9
       test = bb.xpath("#{atbat[0..-24]}")[0]
     else
@@ -110,12 +104,8 @@ root_urls.each do |url|
     # Returns id of pitcher who threw fastest pitch
     pitcher = test.attributes["pitcher"].value.to_i
 
-    # Opens players file
-    # doc2 = File.open("../players.xml")
     begin
       pp = Nokogiri::XML(open("#{pitcher_url}"))
-
-      # doc2.close
 
       id_arr = []
       first_arr = []
@@ -141,10 +131,7 @@ root_urls.each do |url|
       last = last_arr[index]
       name = first + " " + last
 
-      # Returns pitcher and velo for the game
-      # string = "#{name} threw the fastest pitch in this game at #{fastest} mph."
-      # puts string
-
+      # Leaders for each game
       pitch_array << fastest
       pitcher_id_array << pitcher
       pitcher_name_array << name
@@ -153,7 +140,10 @@ root_urls.each do |url|
   end
 end
 
+# Leader for league
 puts pitch_array.max
+
+# Finds pitcher who threw fastest pitch
 pitch_index = pitch_array.find_index(pitch_array.max)
 if pitch_index != nil
   puts pitcher_name_array[pitch_index]
