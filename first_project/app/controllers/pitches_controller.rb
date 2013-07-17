@@ -1,4 +1,4 @@
-class PitchesController < ActionController::Base
+class PitchesController < ApplicationController
   def index
     @pitch = Pitch.last
   end
