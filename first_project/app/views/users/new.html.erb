@@ -13,15 +13,22 @@
     </div>
   <% end %>
 
-  <%= f.label :screenname %>
-  <%= f.text_field :screenname %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit %>
+  <p>
+    <%= f.label :screenname %><br/>
+    <%= f.text_field :screenname %>
+  </p>
+  <p>
+    <%= f.label :email %><br/>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :password %><br/>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %><br/>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p class="button"><%= f.submit value = "Sign up" %></p>
 
 <% end %>

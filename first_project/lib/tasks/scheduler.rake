@@ -170,7 +170,9 @@ task :update_pitches => :environment do
     hurler.first = pitcher_first_name_array[pitch_index]
     hurler.last = pitcher_last_name_array[pitch_index]
     # squad = Team.find_by_abbreviation("#{pitcher_team_array[pitch_index]}")
-    # squad.pitchers << hurler
+    # unless squad.pitchers.include? hurler
+    #   squad.pitchers << hurler
+    # end
     hurler.pitches << fastball
     fastball.save
     hurler.save
