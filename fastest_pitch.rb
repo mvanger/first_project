@@ -8,16 +8,16 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-date = Date.new(2013,7,15)
-year = date.year
-month = date.month
-day = date.day
-
-# This is for a previous day
-# date = Date.today.prev_day
+# date = Date.new(2013,7,15)
 # year = date.year
 # month = date.month
 # day = date.day
+
+# This is for a previous day
+date = Date.today.prev_day
+year = date.year
+month = date.month
+day = date.day
 
 # Pulls down index page
 begin
