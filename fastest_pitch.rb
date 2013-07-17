@@ -8,7 +8,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-date = Date.new(2013,7,14)
+date = Date.new(2013,7,15)
 year = date.year
 month = date.month
 day = date.day
@@ -155,7 +155,7 @@ puts pitch_array.max
 pitch_index = pitch_array.find_index(pitch_array.max)
 if pitch_index != nil
   puts pitcher_name_array[pitch_index]
+  puts pitcher_team_array[pitch_index]
 else
   puts "No pitches"
 end
-puts pitcher_team_array[pitch_index]
