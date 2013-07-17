@@ -9,7 +9,7 @@ task :update_pitches => :environment do
   require 'nokogiri'
   require 'open-uri'
 
-  # date = Date.new(2013,7,15)
+  # date = Date.new(2013,7,14)
   # year = date.year
   # month = date.month
   # day = date.day
@@ -169,11 +169,11 @@ task :update_pitches => :environment do
     hurler = Pitcher.find_or_create_by_mlb_id("mlb_id: #{pitcher_id_array[pitch_index]}")
     hurler.first = pitcher_first_name_array[pitch_index]
     hurler.last = pitcher_last_name_array[pitch_index]
-    squad = Team.find_by_abbreviation("#{pitcher_team_array[pitch_index]}")
-    squad.pitchers << hurler
+    # squad = Team.find_by_abbreviation("#{pitcher_team_array[pitch_index]}")
+    # squad.pitchers << hurler
     hurler.pitches << fastball
     fastball.save
     hurler.save
-    squad.save
+    # squad.save
   end
 end

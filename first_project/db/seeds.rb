@@ -10,8 +10,6 @@ Team.delete_all
 Pitcher.delete_all
 Pitch.delete_all
 
-u1 = User.create(screenname: "Mike", email: "mvanger@nyu.edu", password: "password")
-
 t1 = Team.create(abbreviation: "BOS", city: "Boston", name: "Red Sox")
 t2 = Team.create(abbreviation: "NYY", city: "New York", name: "Yankees")
 t2 = Team.create(abbreviation: "TB", city: "Tampa Bay", name: "Rays")

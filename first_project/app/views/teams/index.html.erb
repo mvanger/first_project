@@ -1,9 +1,14 @@
 <h2>Favorite Teams</h2>
 
-  <% @user.teams.each do |team| %>
+  <% @current_user.teams.each do |team| %>
     <h3>
       <%= team.city %> <%= team.name %>
     </h3>
+    <p>
+      <% if team.pitchers.empty? %>
+        This team has no flamethrowers!
+      <% end %>
+    </p>
     <p>
       <% team.pitchers.each do |pitcher| %>
         <%= pitcher.first %> <%= pitcher.last %>
