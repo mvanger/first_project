@@ -1,0 +1,12 @@
+<h2>Favorite Teams</h2>
+
+  <% @user.teams.each do |team| %>
+    <h3>
+      <%= team.city %> <%= team.name %>
+    </h3>
+    <p>
+      <% team.pitchers.each do |pitcher| %>
+        <%= pitcher.first %> <%= pitcher.last %>
+      <% end %>
+    </p>
+  <% end %>
