@@ -18,4 +18,7 @@ class PitchesController < ApplicationController
       @arr_2 << p.pitches.size
     end
   end
+
+  def about
+  end
 end

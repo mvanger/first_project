@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1>Sign up</h1>
+  <h1 style="color: #bc131a">Sign up</h1>
 
   <%= form_for @user do |f| %>
 
@@ -16,11 +16,11 @@
 
     <p>
       <%= f.label :screenname %><br/>
-      <%= f.text_field :screenname %>
+      <%= f.text_field :screenname, :placeholder => "Screenname", :autofocus => true %>
     </p>
     <p>
       <%= f.label :email %><br/>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, :placeholder => "Email" %>
     </p>
     <p>
       <%= f.label :password %><br/>
@@ -30,7 +30,7 @@
       <%= f.label :password_confirmation %><br/>
       <%= f.password_field :password_confirmation %>
     </p>
-    <p class="button"><%= f.submit value = "Sign up" %></p>
+    <p><%= f.submit value = "Sign up", :class => "btn" %></p>
 
   <% end %>
 </div>

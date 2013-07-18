@@ -11,6 +11,11 @@ class TeamsController < ApplicationController
     @teams = Team.find_all_by_city(params[:input].titleize)
 
     if @teams.empty?
+      name = params[:input].upcase
+      @teams = Team.find_all_by_abbreviation(name)
+    end
+
+    if @teams.empty?
       @teams = Team.find_all_by_name(params[:input].titleize)
     end
 

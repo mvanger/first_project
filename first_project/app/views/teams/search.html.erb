@@ -1,24 +1,36 @@
+<div class="row">
+<div class="span10 offset1" style="color: #bc131a">
 <h2>Search Results</h2>
-
+</div>
 <% @teams.each do |team| %>
   <h3>
-    <div style="float: left; width: auto;">
-    <%= team.city %> <%= team.name %></div>
-    <%= button_to "Favorite", favorite_path(abbreviation: team.abbreviation) %>
+
+    <div class="span4 offset1" style="float: left">
+      <%= team.city %> <%= team.name %>
+    </div>
+    <div class="span4">
+    <%= button_to "Favorite", favorite_path(abbreviation: team.abbreviation), :class => "btn btn-inverse" %>
+    </div>
+
   </h3>
   <% if team.pitchers.empty? %>
-      <p>The <%= team.name %> have no flamethrowers!</p>
+      <div class="span9 offset2">
+      <p>The <%= team.name %> have no flamethrowers!</p><br/>
+    </div>
   <% else %>
-    <p>Pitchers:</p>
-    <p>
+  <div class="span9 offset2">
+    <h4 style="color: #bc131a">Pitchers:</h4>
+
       <% team.pitchers.each do |pitcher| %>
-        <%= pitcher.first %> <%= pitcher.last %><br/>
-        Number of times leading the league: <%= pitcher.pitches.size %><br/>
+        <h4><%= pitcher.first %> <%= pitcher.last %></h4>
+        <p>Number of times leading the league: <%= pitcher.pitches.size %></p><br/>
       <% end %>
-    </p>
+</div>
   <% end %>
 <% end %>
-
+</div>
+<div class="offset1">
 <% if @teams.empty? %>
   No results
 <% end %>
+</div>

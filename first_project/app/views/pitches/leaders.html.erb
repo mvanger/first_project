@@ -1,14 +1,18 @@
-<h1>Leaders</h1>
-
-<p>The fastest pitch this season was
-
+<div class="row">
+<div class="text-center" style="color: #bc131a">
+  <h1>Leader</h1><br/>
+</div>
+<div class="text-center">
+<h4>The fastest pitch this season was
   <%= @arr.max %> mph, thrown by
   <% fastest = @pitch[@arr.find_index(@arr.max)] %>
   <%= fastest.pitcher.first %> <%= fastest.pitcher.last %>, <%= fastest.pitcher.team.abbreviation %>.
-</p>
+</h4><br/>
 
 <p>
 
   <% hurler = @pitcher[@arr_2.find_index(@arr_2.max)] %>
-  <%= hurler.first %> <%= hurler.last %> has had the fastest pitch <%= @arr_2.max %> times, tops in the league.
+  <%= hurler.last %> has had the fastest pitch <%= @arr_2.max %> times, tops in the league.
 </p>
+</div>
+

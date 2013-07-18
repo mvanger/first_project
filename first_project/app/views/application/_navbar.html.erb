@@ -1,4 +1,6 @@
-<h1 class="text-center">Daily Pitches</h1>
+<div class="container">
+  <h1 class="text-left" style="font-size: 450%; padding-bottom: 15px">Daily Pitches</h1>
+</div>
 <div class="navbar" id="user_nav">
   <div class="navbar-inner">
     <% if current_user %>
@@ -6,9 +8,10 @@
         <li class="divider-vertical" ><%= link_to("Home", root_path) %></li>
         <li class="divider-vertical" ><%= link_to("Leaders", leaders_path) %></li>
         <li class="divider-vertical" ><%= link_to("Favorites", teams_path) %></li>
+        <li class="divider-vertical" ><%= link_to("About", about_path) %></li>
         <li class="divider-vertical" >
           <form class="navbar-form" style="display: inline" action="/teams/search" method="get">
-            <input type="text" name="input" placeholder="Search for a team">
+            <input type="text" name="input" placeholder="Search for a team" autofocus>
             <button class="btn">Search</button>
           </form>
         </li>
@@ -21,6 +24,7 @@
       <ul class="nav">
         <li class="divider-vertical"><%= link_to("Home", root_path) %></li>
         <li class="divider-vertical"><%= link_to("Leaders", leaders_path) %></li>
+        <li class="divider-vertical" ><%= link_to("About", about_path) %></li>
       </ul>
       <ul class="nav pull-right">
         <li class="divider-vertical"><%= link_to "Log in", log_in_path %></li>

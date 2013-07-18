@@ -2,25 +2,30 @@
 <html lang="en">
   <head>
     <title>Daily Pitches</title>
-    <%= stylesheet_link_tag    "bootstrap.min", :media => "screen" %>
+    <%= stylesheet_link_tag    "application", :media => "screen" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="container">
-      <%= render 'navbar' %>
+    <div id="wrap">
+      <div class="container">
+        <%= render 'navbar' %>
 
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash#{name}" %>
-      <% end %>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash#{name}", :class => "text-center", :style => "color: #bc131a" %>
+        <% end %>
 
-      <%= yield %>
-
-    <footer class="text-right">
-      <div>
-        <a href="http://www.twitter.com/dailypitches"><%= image_tag("social-twitter.png", alt: "Twitter") %></a>
+        <%= yield %>
       </div>
-    </footer>
+      <div id="push" style="padding: 60px"></div>
+
+      <div id="fixed-footer" class="text-right navbar-fixed-top" style="padding: 10px">
+        <div class="container">
+          <a href="http://www.facebook.com/dailypitches"><%= image_tag("social-facebook.png", alt: "Facebook") %></a>
+          <a href="http://www.twitter.com/dailypitches"><%= image_tag("social-twitter.png", alt: "Twitter") %></a>
+        </div>
+      </div>
+    </div>
     </div>
   </body>
 </html>

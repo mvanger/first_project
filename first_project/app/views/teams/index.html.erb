@@ -1,18 +1,30 @@
-<h2>Favorite Teams</h2>
+
+
+<div class="row">
+<div class="span11 offset1" style="color: #bc131a">
+  <h2>Favorite Teams</h2>
+</div>
 
 <% @current_user.teams.each do |team| %>
+  <div class="span10 offset2">
   <h3>
     <%= team.city %> <%= team.name %>
   </h3>
+  </div>
+  <div class="span9 offset3">
   <% if team.pitchers.empty? %>
-    <p>The <%= team.name %> have no flamethrowers!</p>
+    <p>The <%= team.name %> have no flamethrowers!</p><br/>
   <% else %>
-    <p>Pitchers:</p>
-    <p>
+    <h4 style="color: #bc131a">Pitchers:</h4>
+
       <% team.pitchers.each do |pitcher| %>
-        <%= pitcher.first %> <%= pitcher.last %><br/>
-        Number of times leading the league: <%= pitcher.pitches.size %><br/>
+        <h4><%= pitcher.first %> <%= pitcher.last %></h4>
+         <p>Number of times leading the league: <%= pitcher.pitches.size %></p><br/>
       <% end %>
-    </p>
+
   <% end %>
+
+</div>
 <% end %>
+
+</div>
