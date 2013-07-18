@@ -1,0 +1,19 @@
+<h1>Leaderboards</h1>
+
+<p>The fastest pitch this season was
+  <% arr = [] %>
+  <% @pitch.each do |p| %>
+    <% arr << p.mph %>
+  <% end %>
+  <%= arr.max %> mph, thrown by
+  <% fastest = @pitch[arr.find_index(arr.max)] %>
+  <%= fastest.pitcher.first %> <%= fastest.pitcher.last %>, <%= fastest.pitcher.team.abbreviation %>.
+</p>
+
+<p>
+  <% arr_2 = [] %>
+  <% @pitcher.each do |p| %>
+    <% arr_2 << p.pitches.size %>
+  <% end %>
+  <% hurler = @pitcher[arr_2.find_index(arr_2.max)] %>
+  <%= hurler.first %> <%= hurler.last %> has had the fastest pitch <%= arr_2.max %> times, tops in the league.

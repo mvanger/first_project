@@ -7,6 +7,9 @@ FirstProject::Application.routes.draw do
 
   root to: 'pitches#index'
   get '/teams' => 'teams#index'
+  get '/teams/search' => 'teams#search'
+  post '/teams/favorite' => 'teams#favorite', as: "favorite"
+  get '/leaderboards' => 'pitches#leaderboards'
   resources :users
   resources :sessions
 end

@@ -1,11 +1,17 @@
 <div id="user_nav">
   <% if current_user %>
     <%= link_to("Home", root_path) %> |
+    <%= link_to("Leaderboards", leaderboards_path) %> |
     <%= link_to("Favorites", teams_path) %> |
+    <form style="display: inline" action="/teams/search" method="get">
+      <input type="text" name="input" placeholder="Search for a team">
+      <button>Search</button>
+    </form> |
     Hi, <%= current_user.screenname %>! |
     <%= link_to "Log out", log_out_path %>
   <% else %>
     <%= link_to("Home", root_path) %> |
+    <%= link_to("Leaderboards", leaderboards_path) %> |
     <%= link_to "Log in", log_in_path %> |
     <%= link_to "Sign up", sign_up_path %>
   <% end %>

@@ -9,16 +9,25 @@ task :update_pitches => :environment do
   require 'nokogiri'
   require 'open-uri'
 
+  date_1 = Date.new(2013,4,8)
+  date_2 = Date.new(2013,7,14)
+  date_array = (date_1..date_2).map{|day| day}
+
+  date_array.each do |date|
+    year = date.year
+    month = date.month
+    day = date.day
+
   # date = Date.new(2013,7,14)
   # year = date.year
   # month = date.month
   # day = date.day
 
   # This is for a previous day
-  date = Date.today.prev_day
-  year = date.year
-  month = date.month
-  day = date.day
+  # date = Date.today.prev_day
+  # year = date.year
+  # month = date.month
+  # day = date.day
 
   # Pulls down index page
   begin
@@ -166,16 +175,20 @@ task :update_pitches => :environment do
   unless pitch_array.max == nil
     fastball = Pitch.create
     fastball.mph = pitch_array.max
-    hurler = Pitcher.find_or_create_by_mlb_id("mlb_id: #{pitcher_id_array[pitch_index]}")
-    hurler.first = pitcher_first_name_array[pitch_index]
-    hurler.last = pitcher_last_name_array[pitch_index]
-    # squad = Team.find_by_abbreviation("#{pitcher_team_array[pitch_index]}")
-    # unless squad.pitchers.include? hurler
-    #   squad.pitchers << hurler
-    # end
-    hurler.pitches << fastball
+    @hurler = Pitcher.find_by_mlb_id("#{pitcher_id_array[pitch_index]}")
+    if @hurler == nil
+      @hurler = Pitcher.create(mlb_id: "#{pitcher_id_array[pitch_index]}")      # @hurler = Pitcher.find_by_mlb_id("#{pitcher_id_array[pitch_index]}")
+    end
+    @hurler.first = pitcher_first_name_array[pitch_index]
+    @hurler.last = pitcher_last_name_array[pitch_index]
+    squad = Team.find_by_abbreviation("#{pitcher_team_array[pitch_index]}")
+    unless squad.pitchers.include? @hurler
+      squad.pitchers << @hurler
+    end
+    @hurler.pitches << fastball
     fastball.save
-    hurler.save
-    # squad.save
+    @hurler.save
+    squad.save
   end
+end
 end

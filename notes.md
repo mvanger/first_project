@@ -16,9 +16,7 @@ Then query pitch for the date and the pitcher for that pitch
 # Add an error escape for the 10th ab of the inning
 # Similar to as for pitches per at bat
 # And for extra innings
-
-# Users can search for and favorite teams
-# Then display that team, its pitchers, and their pitches
+## nvm this should be fine
 
 # Leaderboards
 

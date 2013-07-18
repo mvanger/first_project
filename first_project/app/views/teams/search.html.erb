@@ -1,0 +1,11 @@
+<h2>Search Results</h2>
+
+<% @teams.each do |team| %>
+  <div style="float: left; width: auto;">
+  <%= team.city %> <%= team.name %></div>
+  <%= button_to "Favorite", favorite_path(abbreviation: team.abbreviation) %><br/>
+<% end %>
+
+<% if @teams.empty? %>
+  No results
+<% end %>

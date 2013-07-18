@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, on: :create
   validates :email, presence: true
   validates :email, uniqueness: true
+  validates :email, :email_format => {:message => 'invalid'}
   validates :screenname, presence: true
   validates :screenname, uniqueness: true
 
