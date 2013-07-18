@@ -1,10 +1,5 @@
 desc "This task should be called once to get all games from Opening Day until the AS Break"
 task :get_season => :environment do
-  # Send pitchers into database?
-  # No games on Thursday
-  # Store in a database? p id, first, last, pitch, date
-  # Then I can call last date with a pitch
-  ## And also work towards a leaderboard
 
   require 'nokogiri'
   require 'open-uri'

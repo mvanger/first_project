@@ -1,10 +1,5 @@
 desc "This task is called by the Heroku scheduler add-on"
 task :update_pitches => :environment do
-  # Send pitchers into database?
-  # No games on Thursday
-  # Store in a database? p id, first, last, pitch, date
-  # Then I can call last date with a pitch
-  ## And also work towards a leaderboard
 
   require 'nokogiri'
   require 'open-uri'
