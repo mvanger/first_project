@@ -1,18 +1,31 @@
-<div id="user_nav">
-  <% if current_user %>
-    <%= link_to("Home", root_path) %> |
-    <%= link_to("Leaders", leaders_path) %> |
-    <%= link_to("Favorites", teams_path) %> |
-    <form style="display: inline" action="/teams/search" method="get">
-      <input type="text" name="input" placeholder="Search for a team">
-      <button>Search</button>
-    </form> |
-    Hi, <%= current_user.screenname %>! |
-    <%= link_to "Log out", log_out_path %>
-  <% else %>
-    <%= link_to("Home", root_path) %> |
-    <%= link_to("Leaders", leaders_path) %> |
-    <%= link_to "Log in", log_in_path %> |
-    <%= link_to "Sign up", sign_up_path %>
-  <% end %>
+<h1 class="text-center">Daily Pitches</h1>
+<div class="navbar" id="user_nav">
+  <div class="navbar-inner">
+    <% if current_user %>
+      <ul class="nav">
+        <li class="divider-vertical" ><%= link_to("Home", root_path) %></li>
+        <li class="divider-vertical" ><%= link_to("Leaders", leaders_path) %></li>
+        <li class="divider-vertical" ><%= link_to("Favorites", teams_path) %></li>
+        <li class="divider-vertical" >
+          <form class="navbar-form" style="display: inline" action="/teams/search" method="get">
+            <input type="text" name="input" placeholder="Search for a team">
+            <button class="btn">Search</button>
+          </form>
+        </li>
+      </ul>
+      <ul class="nav pull-right">
+        <li class="divider-vertical pull-right"><p class="navbar-text">Hi, <%= current_user.screenname %>!</p></li>
+        <li class="divider-vertical pull-right"><%= link_to "Log out", log_out_path %></li>
+      </ul>
+    <% else %>
+      <ul class="nav">
+        <li class="divider-vertical"><%= link_to("Home", root_path) %></li>
+        <li class="divider-vertical"><%= link_to("Leaders", leaders_path) %></li>
+      </ul>
+      <ul class="nav pull-right">
+        <li class="divider-vertical"><%= link_to "Log in", log_in_path %></li>
+        <li class="divider-vertical"><%= link_to "Sign up", sign_up_path %></li>
+      </ul>
+    <% end %>
+  </div>
 </div>

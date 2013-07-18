@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Daily Pitches</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <title>Daily Pitches</title>
+    <%= stylesheet_link_tag    "bootstrap.min", :media => "screen" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <%= render 'navbar' %>
 
-  <h1>Daily Pitches</h1>
-  <%= render 'navbar' %>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash#{name}" %>
+      <% end %>
 
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :id => "flash#{name}" %>
-  <% end %>
+      <%= yield %>
 
-  <%= yield %>
-
-  <footer>
-    <a href="http://www.twitter.com/dailypitches"><%= image_tag("social-twitter.png", alt: "Twitter") %></a>
-  </footer>
-
-</body>
+    <footer class="text-right">
+      <div>
+        <a href="http://www.twitter.com/dailypitches"><%= image_tag("social-twitter.png", alt: "Twitter") %></a>
+      </div>
+    </footer>
+    </div>
+  </body>
 </html>
