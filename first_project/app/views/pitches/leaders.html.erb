@@ -1,0 +1,14 @@
+<h1>Leaders</h1>
+
+<p>The fastest pitch this season was
+
+  <%= @arr.max %> mph, thrown by
+  <% fastest = @pitch[@arr.find_index(@arr.max)] %>
+  <%= fastest.pitcher.first %> <%= fastest.pitcher.last %>, <%= fastest.pitcher.team.abbreviation %>.
+</p>
+
+<p>
+
+  <% hurler = @pitcher[@arr_2.find_index(@arr_2.max)] %>
+  <%= hurler.first %> <%= hurler.last %> has had the fastest pitch <%= @arr_2.max %> times, tops in the league.
+</p>

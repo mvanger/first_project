@@ -1,4 +1,4 @@
-desc "This task is called by the Heroku scheduler add-on"
+desc "This task gets the ASG data"
 task :update_pitches => :environment do
   # Send pitchers into database?
   # No games on Thursday
@@ -10,7 +10,7 @@ task :update_pitches => :environment do
   require 'open-uri'
 
   # This is for a previous day
-  date = Date.today.prev_day
+  date = Date.new(2013,7,16)
   year = date.year
   month = date.month
   day = date.day
@@ -165,13 +165,13 @@ task :update_pitches => :environment do
     end
     @hurler.first = pitcher_first_name_array[pitch_index]
     @hurler.last = pitcher_last_name_array[pitch_index]
-    squad = Team.find_by_abbreviation("#{pitcher_team_array[pitch_index]}")
-    unless squad.pitchers.include? @hurler
-      squad.pitchers << @hurler
-    end
+    # squad = Team.find_by_abbreviation("#{pitcher_team_array[pitch_index]}")
+    # unless squad.pitchers.include? @hurler
+    #   squad.pitchers << @hurler
+    # end
     @hurler.pitches << fastball
     fastball.save
     @hurler.save
-    squad.save
+    # squad.save
   end
 end

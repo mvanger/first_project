@@ -3,9 +3,19 @@ class PitchesController < ApplicationController
     @pitch = Pitch.last
   end
 
-  def leaderboards
+  def leaders
     @pitch = Pitch.all
     @pitcher = Pitcher.all
     @team = Team.all
+
+    @arr = []
+    @pitch.each do |p|
+      @arr << p.mph
+    end
+
+    @arr_2 = []
+    @pitcher.each do |p|
+      @arr_2 << p.pitches.size
+    end
   end
 end

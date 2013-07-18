@@ -1,11 +1,5 @@
-<h2>Favorite Teams</h2>
-
-<% @current_user.teams.each do |team| %>
-  <h3>
-    <%= team.city %> <%= team.name %>
-  </h3>
-  <% if team.pitchers.empty? %>
-    <p>The <%= team.name %> have no flamethrowers!</p>
+<% if team.pitchers.empty? %>
+      <p>The <%= team.name %> have no flamethrowers!</p>
   <% else %>
     <p>Pitchers:</p>
     <p>
@@ -15,4 +9,3 @@
       <% end %>
     </p>
   <% end %>
-<% end %>

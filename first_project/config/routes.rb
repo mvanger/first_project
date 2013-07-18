@@ -9,7 +9,7 @@ FirstProject::Application.routes.draw do
   get '/teams' => 'teams#index'
   get '/teams/search' => 'teams#search'
   post '/teams/favorite' => 'teams#favorite', as: "favorite"
-  get '/leaderboards' => 'pitches#leaderboards'
+  get '/leaders' => 'pitches#leaders'
   resources :users
   resources :sessions
 end
