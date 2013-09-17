@@ -23,6 +23,20 @@ gem 'jquery-rails'
 
 gem 'rails-erd'
 
+gem 'newrelic_rpm'
+gem 'puma'
+
+
+# This wasn't working well with user login
+# Figure out how to work around
+# It's commented out here, in the pitches controller, and in config/environments/production.rb
+# Lines 45-60
+
+# gem 'memcachier'  # For our specific memcache on heroku
+# gem 'rack-cache'  # This adds our rack-cache middleware
+# gem 'dalli'       # Newer cache client
+# gem 'kgio'        # Better i/o
+
 gem 'nokogiri'
 gem 'openurl'
 gem 'pry'
