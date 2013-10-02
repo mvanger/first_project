@@ -13,9 +13,9 @@ task :update_pitches => :environment do
   # Pulls down index page
   begin
     if day > 9
-      data = Nokogiri::HTML(open("http://gd2.mlb.com/components/game/mlb/year_#{year}/month_0#{month}/day_#{day}/"))
+      data = Nokogiri::HTML(open("http://gd2.mlb.com/components/game/mlb/year_#{year}/month_#{month}/day_#{day}/"))
     else
-      data = Nokogiri::HTML(open("http://gd2.mlb.com/components/game/mlb/year_#{year}/month_0#{month}/day_0#{day}/"))
+      data = Nokogiri::HTML(open("http://gd2.mlb.com/components/game/mlb/year_#{year}/month_#{month}/day_0#{day}/"))
     end
   rescue
   end
@@ -37,9 +37,9 @@ task :update_pitches => :environment do
   root_urls = []
   gid.each do |game_id|
     if day > 9
-      root_url = "http://gd2.mlb.com/components/game/mlb/year_#{year}/month_0#{month}/day_#{day}/" + game_id
+      root_url = "http://gd2.mlb.com/components/game/mlb/year_#{year}/month_#{month}/day_#{day}/" + game_id
     else
-      root_url = "http://gd2.mlb.com/components/game/mlb/year_#{year}/month_0#{month}/day_0#{day}/" + game_id
+      root_url = "http://gd2.mlb.com/components/game/mlb/year_#{year}/month_#{month}/day_0#{day}/" + game_id
     end
     root_urls << root_url
   end
