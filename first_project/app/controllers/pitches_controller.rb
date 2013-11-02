@@ -1,6 +1,6 @@
 class PitchesController < ApplicationController
   def index
-    @pitch = Pitch.last
+    # @pitch = Pitch.last
     # expires_in 3.seconds, public: true
   end
 
