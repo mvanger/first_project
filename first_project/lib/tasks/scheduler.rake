@@ -165,6 +165,7 @@ task :update_pitches => :environment do
       squad.pitchers << @hurler
     end
     @hurler.pitches << fastball
+    fastball.year = 2014
     fastball.save
     @hurler.save
     squad.save

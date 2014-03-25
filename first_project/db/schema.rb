@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717131549) do
+ActiveRecord::Schema.define(:version => 20140325200251) do
 
   create_table "pitchers", :force => true do |t|
     t.integer  "team_id"
@@ -31,8 +31,9 @@ ActiveRecord::Schema.define(:version => 20130717131549) do
   create_table "pitches", :force => true do |t|
     t.integer  "pitcher_id"
     t.float    "mph"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.integer  "year",       :default => 2013
   end
 
   create_table "teams", :force => true do |t|
