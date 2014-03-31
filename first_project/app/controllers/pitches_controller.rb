@@ -1,11 +1,11 @@
 class PitchesController < ApplicationController
   def index
-    # @pitch = Pitch.last
+    @pitch = Pitch.last
     # expires_in 3.seconds, public: true
   end
 
   def leaders
-    @pitch = Pitch.all
+    @pitch = Pitch.where("year = ?", 2014)
     @pitcher = Pitcher.all
     @team = Team.all
     # expires_in 3.seconds, public: true
@@ -17,7 +17,13 @@ class PitchesController < ApplicationController
 
     @arr_2 = []
     @pitcher.each do |p|
-      @arr_2 << p.pitches.size
+      i = 0
+      p.pitches.each do |k|
+        if k.year == 2014
+          i += 1
+        end
+      end
+      @arr_2 << i
     end
   end
 

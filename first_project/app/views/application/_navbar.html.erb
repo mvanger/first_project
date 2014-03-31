@@ -25,6 +25,12 @@
         <li class="divider-vertical"><%= link_to("Home", root_path) %></li>
         <li class="divider-vertical"><%= link_to("Leaders", leaders_path) %></li>
         <li class="divider-vertical" ><%= link_to("About", about_path) %></li>
+        <li class="divider-vertical" >
+          <form class="navbar-form" style="display: inline" action="/teams/search" method="get">
+            <input type="text" name="input" placeholder="Search for a team" autofocus>
+            <button class="btn">Search</button>
+          </form>
+        </li>
       </ul>
       <ul class="nav pull-right">
         <li class="divider-vertical"><%= link_to "Log in", log_in_path %></li>

@@ -12,16 +12,29 @@
   </h3>
   </div>
   <div class="span9 offset3">
+  <% @j = 0 %>
   <% if team.pitchers.empty? %>
+    <h4 style="color: #bc131a">Pitchers:</h4>
     <p>The <%= team.name %> have no flamethrowers!</p><br/>
   <% else %>
     <h4 style="color: #bc131a">Pitchers:</h4>
 
       <% team.pitchers.each do |pitcher| %>
-        <h4><%= pitcher.first %> <%= pitcher.last %></h4>
-         <p>Number of times leading the league: <%= pitcher.pitches.size %></p><br/>
+        <% i = 0 %>
+        <% pitcher.pitches.each do |k| %>
+          <% if k.year == 2014 %>
+            <% i += 1 %>
+          <% end %>
+        <% end %>
+        <% if i > 0 %>
+          <h4><%= pitcher.first %> <%= pitcher.last %></h4>
+          <p>Number of times leading the league: <%= i %></p><br/>
+          <% @j = 1 %>
+        <% end %>
       <% end %>
-
+      <% if @j == 0 %>
+        <p>The <%= team.name %> have no flamethrowers!</p><br/>
+      <% end %>
   <% end %>
 
 </div>
