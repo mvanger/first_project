@@ -170,5 +170,4 @@ task :update_pitches => :environment do
     @hurler.save
     squad.save
   end
-  binding.pry
 end
