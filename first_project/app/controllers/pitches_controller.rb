@@ -5,7 +5,7 @@ class PitchesController < ApplicationController
   end
 
   def leaders
-    @pitch = Pitch.where("year = ?", 2014)
+    @pitch = Pitch.where("year = ?", Date.today.year)
     @pitcher = Pitcher.all
     @team = Team.all
     # expires_in 3.seconds, public: true
@@ -19,7 +19,7 @@ class PitchesController < ApplicationController
     @pitcher.each do |p|
       i = 0
       p.pitches.each do |k|
-        if k.year == 2014
+        if k.year == Date.today.year
           i += 1
         end
       end
